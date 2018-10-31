@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -19,10 +20,12 @@ import ml.shahidkamal.libjokerui.JokerActivity;
 public class JokerAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService  = null;
     private final Context context;
+    private ProgressDialog pd;
 
 
-    public JokerAsyncTask(Context context) {
+    public JokerAsyncTask(Context context, ProgressDialog pd) {
         this.context = context;
+        this.pd = pd;
     }
 
     @Override
@@ -51,8 +54,7 @@ public class JokerAsyncTask extends AsyncTask<Pair<Context, String>, Void, Strin
 
     @Override
     protected void onPostExecute(String s) {
-        MainActivity activity = (MainActivity) context;
-        activity.pd.dismiss();
+        if(pd!=null) pd.dismiss();
         Intent intent = new Intent(context, JokerActivity.class);
         intent.putExtra(Intent.EXTRA_TEXT, s);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

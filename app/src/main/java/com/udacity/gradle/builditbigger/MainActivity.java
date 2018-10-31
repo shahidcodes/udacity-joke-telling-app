@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
         pd = new ProgressDialog(this);
         pd.setIndeterminate(true);
         pd.setMessage("Hold on! Getting some laughter for you.");
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view){
         pd.show();
-        new JokerAsyncTask(this).execute();
+        new JokerAsyncTask(this, pd).execute();
     }
 
 }
