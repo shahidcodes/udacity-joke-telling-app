@@ -18,29 +18,16 @@ import ml.shahidkamal.libjoker.Joker;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment implements View.OnClickListener {
+public class MainActivityFragment extends Fragment {
 
-    TextView tvJoke;
-    Button btnTellJoke;
-    Joker joker;
     public MainActivityFragment() {
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        joker = new Joker();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-        tvJoke = root.findViewById(R.id.instructions_text_view);
-        btnTellJoke = root.findViewById(R.id.btn_tell_joke);
-        btnTellJoke.setOnClickListener(this);
-
-
         AdView mAdView = (AdView) root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
@@ -50,10 +37,5 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                 .build();
         mAdView.loadAd(adRequest);
         return root;
-    }
-
-    @Override
-    public void onClick(View view) {
-        tvJoke.setText(joker.getRandomJoke());
     }
 }

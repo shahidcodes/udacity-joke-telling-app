@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/libjoker/libjoker.iml" filepath="$PROJECT_DIR$/libjoker/libjoker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libjokerui/libjokerui.iml" filepath="$PROJECT_DIR$/libjokerui/libjokerui.iml" />
       <module fileurl="file://$PROJECT_DIR$/udacity-joke-telling-app.iml" filepath="$PROJECT_DIR$/udacity-joke-telling-app.iml" />
     </modules>
   </component>
