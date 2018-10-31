@@ -1,23 +1,25 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import ml.shahidkamal.libjoker.Joker;
-import ml.shahidkamal.libjokerui.JokerActivity;
-
 
 public class MainActivity extends AppCompatActivity {
 
+    ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        pd = new ProgressDialog(this);
+        pd.setIndeterminate(true);
+        pd.setMessage("Hold on! Getting some laughter for you.");
     }
 
 
@@ -30,12 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -44,10 +41,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view){
-        Joker joker = new Joker();
-        Intent intent = new Intent(this, JokerActivity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, joker.getRandomJoke());
-        startActivity(intent);
+        pd.show();
+        new JokerAsyncTask(this).execute();
     }
 
 }
